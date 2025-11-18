@@ -77,6 +77,9 @@
     /* ------------------------------------------- */
     /* ESTILOS GERAIS */
     /* ------------------------------------------- */
+    html{
+      overflow-x: hidden; /* FIX 1: Adicionado para garantir a remoção da rolagem horizontal */
+    }
     body{
       background: var(--background-color);
       color: var(--text-color);
@@ -217,7 +220,7 @@
       inset:0;
       background-size:cover;
       background-position:center;
-      background-image:url('1.jpeg');
+      background-image:url('background.jpeg');
       filter:brightness(.45);
     }
 
@@ -389,9 +392,14 @@
 
 /* LOGO MAIOR E MAIS CINEMÁTICO */
 #splash-logo {
-    height: 540px; /* Antes 260px — agora bem maior */
+    /* height: 540px; <-- REMOVIDO: FIX 2 */
     width: auto;
 
+    /* NOVO: Tornar a imagem responsiva para mobile - FIX 2 */
+    max-height: 80vh; 
+    max-width: 80vw;
+    height: auto; 
+    
     /* Luz difusa bem forte */
     filter: drop-shadow(0 0 40px rgba(255,255,255,0.8))
             drop-shadow(0 0 90px rgba(255,255,255,0.5))
@@ -625,12 +633,6 @@
     bottom: 0;
     border-radius: 2px;
 }
-/* CORREÇÃO: Centraliza o underline quando o texto está centralizado */
-.section-title.text-center::after {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-}
-
 
 .section-title-big {
     font-size: 2.3rem;
@@ -819,27 +821,6 @@
     filter: drop-shadow(0 4px 15px var(--color-secondary));
 }
 
-/* ------------------------------------------- */
-/* CORREÇÕES RESPONSIVAS (MOBILE) */
-/* ------------------------------------------- */
-
-@media (max-width: 991.98px) {
-    /* 2. Remove o espaço do div de partículas em telas pequenas */
-    #random-effect-container {
-        height: 0px !important; 
-    }
-}
-
-@media (max-width: 767.98px) {
-    /* 1. Reduz o tamanho do logo do splash para caber no mobile */
-    #splash-logo {
-        /* 50% da altura da tela, mas não mais que 260px */
-        height: 50vh !important; 
-        max-height: 260px !important;
-        width: auto !important;
-    }
-}
-
 </style>
 </head>
 <body>
@@ -885,8 +866,10 @@
         <h1>Caio AD — Ilustrações e Mangás</h1>
         <p class="lead" style="color: white;">Arte digital, personagens, mangá e ilustrações personalizadas sob encomenda.</p>
 
-        <a href="#encomendas" class="btn-premium">Pedir Encomenda</a>
-        <a href="#galeria" class="btn-ghost">Ver Galeria</a>
+        <div class="d-flex flex-wrap gap-3 mt-3">
+          <a href="#encomendas" class="btn-premium">Pedir Encomenda</a>
+          <a href="#galeria" class="btn-ghost">Ver Galeria</a>
+        </div>
       </div>
       <div class="col-lg-5 d-none d-lg-block">
         <div class="card-portfolio mt-3 p-0" style="overflow:hidden;">
@@ -899,8 +882,7 @@
   </div>
 </section>
 
-<div id="random-effect-container" style="overflow: hidden; position: relative; z-index: -1;"></div>
-
+<div id="random-effect-container" style="height: 0px; overflow: hidden; position: relative; z-index: -1;"></div>
 <section id="bio" class="container py-5">
   <div class="row g-5 align-items-center"> 
     
@@ -911,7 +893,7 @@
     </div>
 
     <div class="col-md-8">
-      <h3 class="section-title text-center text-md-start">Sobre o Artista</h3>
+      <h3 class="section-title">Sobre o Artista</h3>
 
       <p style="color:var(--text-color)">
         <strong>Caio Augusto Delfini</strong> ou também conhecido como <strong>CaioAD</strong>,
@@ -945,9 +927,9 @@
 </section>
 
 <section id="galeria" class="container py-5">
-  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-    <h3 class="section-title text-center text-md-start mb-3 mb-md-0">Galeria de Artes</h3>
-    <span class="small text-center" style="color:var(--text-color)">Clique em qualquer arte para ampliar</span>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="section-title">Galeria de Artes</h3>
+    <span class="small" style="color:var(--text-color)">Clique em qualquer arte para ampliar</span>
   </div>
 
   <div class="row g-4"> <div class="col-sm-6 col-md-4">
@@ -994,7 +976,31 @@
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="3.jpeg">
-        <img src="3.jpeg" class="gallery-img" alt="Arte da Galeria 6">
+        <img src="6.jpeg" class="gallery-img" alt="Arte da Galeria 6">
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="gallery-img-wrapper rounded"
+           data-bs-toggle="modal" data-bs-target="#lightboxModal"
+           data-src="3.jpeg">
+        <img src="7.jpeg" class="gallery-img" alt="Arte da Galeria 6">
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="gallery-img-wrapper rounded"
+           data-bs-toggle="modal" data-bs-target="#lightboxModal"
+           data-src="3.jpeg">
+        <img src="8.jpeg" class="gallery-img" alt="Arte da Galeria 6">
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="gallery-img-wrapper rounded"
+           data-bs-toggle="modal" data-bs-target="#lightboxModal"
+           data-src="3.jpeg">
+        <img src="9.jpeg" class="gallery-img" alt="Arte da Galeria 6">
       </div>
     </div>
 
@@ -1020,7 +1026,7 @@
 <div class="row justify-content-center">
   <div class="col-lg-8">
 
-    <h3 class="section-title text-center">Solicitar Encomenda</h3>
+    <h3 class="section-title">Solicitar Encomenda</h3>
     <p class="small mb-4" style="color:var(--text-color)">
       Preencha os campos abaixo. Ao enviar, o WhatsApp abrirá automaticamente com a mensagem formatada.
     </p>
@@ -1191,8 +1197,8 @@
 <section id="contato" class="py-5">
   <div class="container">
 
-    <h3 class="fw-bold mb-4 text-center text-md-start" style="color:var(--highlight-color)">Entre em Contato</h3>
-    <p class="mb-4 text-center text-md-start" style="color:var(--text-color)">
+    <h3 class="fw-bold mb-4" style="color:var(--highlight-color)">Entre em Contato</h3>
+    <p class="mb-4" style="color:var(--text-color)">
       Entre em contato para dúvidas, pedidos ou parcerias.
     </p>
 
