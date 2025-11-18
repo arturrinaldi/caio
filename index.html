@@ -125,6 +125,16 @@
         filter: none;
     }
 
+    /* CORREÇÃO DE ALINHAMENTO NO MOBILE: Centraliza itens de navegação */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            text-align: center;
+        }
+        .navbar-nav {
+            margin-bottom: 15px;
+        }
+    }
+
 
     /* EFEITO BRILHO METÁLICO (SHINE) */
     .navbar-shine::before {
@@ -203,6 +213,25 @@
       padding-top: 100px;
       padding-bottom: 50px;
     }
+    /* AJUSTE PARA O MOBILE: Mais padding e alinhamento central */
+    @media (max-width: 768px) {
+        .hero {
+            text-align: center;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        .hero h1 {
+            font-size: 2.5rem !important; /* Tamanho de fonte menor para mobile */
+        }
+        .hero .btn-premium, .hero .btn-ghost {
+            display: block;
+            margin: 10px auto;
+        }
+        .hero .card-portfolio {
+            display: none !important; /* Esconde a arte em destaque no mobile */
+        }
+    }
+
 
     .hero h1 {
     color: #ffffff !important;
@@ -360,7 +389,8 @@
       padding: 0;
     }
     #lightboxModal .modal-dialog {
-        max-width: 95%;
+        /* Ajuste do tamanho máximo para ser mais amigável no mobile */
+        max-width: 95vw; 
     }
     
 /* SPLASH COM FUNDO BLOQUEADO COMPLETAMENTE */
@@ -400,6 +430,13 @@
     animation: logoEnter 1s ease-out forwards,
                logoGlow 2.5s ease-in-out infinite alternate;
     opacity: 0;
+}
+
+/* AJUSTE DO LOGO NO SPLASH PARA TELAS PEQUENAS */
+@media (max-width: 576px) {
+    #splash-logo {
+        height: 350px; 
+    }
 }
 
 
@@ -447,6 +484,20 @@
         background: var(--section-bg) !important;
         border: 1px solid var(--navbar-border) !important;
     }
+    
+    /* AJUSTE NO CONTATO PARA MOBILE: Texto justificado ao centro */
+    @media (max-width: 768px) {
+        #contato .rounded {
+            text-align: center;
+        }
+        #contato .d-flex.flex-wrap.gap-2 {
+            justify-content: center;
+        }
+        #contato p.mb-1.small, #contato p.mb-3.small {
+            word-break: break-word; /* Garante que e-mails e telefones não causem overflow */
+        }
+        
+    }
 
     footer {
         background: #0d0d0d !important;
@@ -461,6 +512,15 @@
         padding-top: 60px;
         padding-bottom: 80px;
     }
+    
+    /* AJUSTE GERAL DE PADDING NO MOBILE */
+    @media (max-width: 576px) {
+        #bio, #galeria, #encomendas, #contato {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+        }
+    }
+
 
     #encomendas .form-container {
         background: var(--card-bg);
@@ -626,6 +686,25 @@
     border-radius: 2px;
 }
 
+/* Ajuste do alinhamento do título da seção no mobile */
+@media (max-width: 768px) {
+    #bio .section-title, 
+    #galeria .section-title, 
+    #encomendas .section-title, 
+    #contato h3 {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #bio .section-title::after, 
+    #galeria .section-title::after, 
+    #encomendas .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
 .section-title-big {
     font-size: 2.3rem;
     font-weight: 800;
@@ -683,7 +762,9 @@
   /* Tamanho fixo para garantir que seja um CÍRCULO PERFEITO */
   width: 250px; 
   height: 250px; 
-  max-width: 100%; /* Garante que não ultrapasse a coluna no celular */
+  /* AJUSTE RESPONSIVO: Máximo de 60vw no mobile para caber confortavelmente */
+  max-width: 60vw; 
+  max-height: 60vw;
   
   perspective: 1000px; /* Crucial para o efeito 3D */
   position: relative; 
@@ -700,6 +781,16 @@
   transition: transform 0.8s ease-in-out, box-shadow 0.3s ease, border-color 0.5s; 
   margin: 0 auto; /* Centraliza na coluna */
 }
+
+/* AJUSTE RESPONSIVO DO TAMANHO NO MOBILE */
+@media (max-width: 767px) {
+    .artist-coin-wrapper {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 20px;
+    }
+}
+
 
 /* IMAGEM DO ARTISTA DENTRO DO CONTAINER */
 .artist-coin-wrapper img {
@@ -730,6 +821,8 @@
     color: var(--primary-text-color) !important; /* Cor principal (Branco/Off-white) */
     background-color: #0c0c0c !important; /* **CORREÇÃO: Fundo mais escuro para maximizar o contraste** */
     border: 1px solid var(--navbar-border) !important;
+    /* AJUSTE DE PADDING PARA BOTÃO GRANDE NO MOBILE */
+    padding: 1rem 1.25rem;
 }
 
 /* Título do Acordeão Aberto */
@@ -840,7 +933,7 @@
         <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
       </ul>
       
-      <div class="ms-3">
+      <div class="ms-3 ms-lg-0">
         <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar tema escuro/claro"></button>
       </div>
       
@@ -917,12 +1010,13 @@
 </section>
 
 <section id="galeria" class="container py-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-column flex-md-row">
     <h3 class="section-title">Galeria de Artes</h3>
-    <span class="small" style="color:var(--text-color)">Clique em qualquer arte para ampliar</span>
+    <span class="small mt-2 mt-md-0" style="color:var(--text-color)">Clique em qualquer arte para ampliar</span>
   </div>
 
-  <div class="row g-4"> <div class="col-sm-6 col-md-4">
+  <div class="row g-4"> 
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="1.jpeg">
@@ -930,7 +1024,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="2.jpeg">
@@ -938,7 +1032,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="3.jpeg">
@@ -946,7 +1040,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="4.jpeg">
@@ -954,7 +1048,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="5.jpeg">
@@ -962,7 +1056,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-6 col-sm-6 col-md-4">
       <div class="gallery-img-wrapper rounded"
            data-bs-toggle="modal" data-bs-target="#lightboxModal"
            data-src="3.jpeg">
@@ -974,7 +1068,8 @@
 </section>
 
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-sm-down modal-xl modal-dialog-centered"> <div class="modal-content" style="background:transparent;border:none;">
+  <div class="modal-dialog modal-fullscreen-sm-down modal-xl modal-dialog-centered"> 
+    <div class="modal-content" style="background:transparent;border:none;">
       <div class="modal-body p-0">
         <button type="button" class="btn btn-dark position-absolute m-3" data-bs-dismiss="modal" aria-label="Fechar" style="z-index:99999; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem;">
             &times;
@@ -999,25 +1094,24 @@
 
     <div class="form-container">
       <form id="orderForm" class="row g-3 needs-validation" novalidate>
-
-          <div class="col-md-6">
+        <div class="col-12 col-md-6">
             <label for="nome" class="form-label">Nome completo</label>
             <input type="text" class="form-control" id="nome" required>
             <div class="invalid-feedback">Informe seu nome.</div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-12 col-md-6">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" required>
             <div class="invalid-feedback">E-mail inválido.</div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-12 col-md-6">
             <label for="telefone" class="form-label">Telefone (WhatsApp)</label>
             <input type="text" class="form-control" id="telefone" placeholder="(16) 9xxxx-xxxx">
           </div>
 
-          <div class="col-md-6">
+          <div class="col-12 col-md-6">
             <label for="tipo" class="form-label">Tipo de Arte</label>
             <select class="form-select" id="tipo" required>
               <option value="">Selecione...</option>
@@ -1170,7 +1264,7 @@
 
     <div class="row g-4">
 
-      <div class="col-md-6">
+      <div class="col-12 col-md-6">
         <div class="p-4 rounded">
           <h5 class="fw-bold mb-3"><i class="fas fa-id-card me-2"></i> Informações Diretas</h5>
 
@@ -1183,12 +1277,11 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-12 col-md-6">
         <div class="p-4 rounded">
           <h5 class="fw-bold mb-3"><i class="fas fa-share-alt me-2"></i> Redes Sociais</h5>
 
-          <div class="d-flex flex-wrap gap-2">
-
+          <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
             <a class="social-btn" target="_blank" href="https://www.facebook.com/CaioADArtes">
               <img src="facebook.png" alt="Facebook"> Facebook
             </a>
@@ -1280,10 +1373,29 @@
 
 
     /* --- 3. NOVO EFEITO: PARTÍCULAS ALEATÓRIAS --- */
+    // Note: Esta seção do script cria as partículas e o CSS relacionado
+    // (não está neste bloco de código, mas deve estar no bloco <style>)
     const effectContainer = document.getElementById('random-effect-container');
     const numParticles = 20; // Número de partículas a serem geradas
 
     if (effectContainer) {
+        // **ESTILO FALTANTE (DEVE ESTAR NO <style>!)**
+        // Este código assume que o CSS para .dark-particle e @keyframes flicker
+        // foi adicionado no bloco <style> principal para a funcionalidade completa.
+        // Exemplo: 
+        /* .dark-particle { 
+            position: absolute; 
+            width: 2px; 
+            height: 2px; 
+            background: rgba(255, 255, 255, 0.4); 
+            border-radius: 50%;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        */
+       
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('dark-particle');
@@ -1308,6 +1420,8 @@
 
         // Cria e inicializa as partículas
         for (let i = 0; i < numParticles; i++) {
+            // Nota: Se o CSS .dark-particle não for definido no <style>, 
+            // este efeito não será visível.
             createParticle();
         }
     }
