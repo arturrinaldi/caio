@@ -821,6 +821,58 @@
     filter: drop-shadow(0 4px 15px var(--color-secondary));
 }
 
+/* ------------------------------------------- */
+/* NOVO ESTILO: DESTAQUE TWITCH */
+/* ------------------------------------------- */
+.twitch-highlight {
+    background: #9146FF; /* Cor principal da Twitch */
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(145, 70, 255, 0.4);
+    margin-top: 40px;
+}
+
+.twitch-highlight h3 {
+    color: #ffffff !important;
+    font-weight: 800;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.twitch-highlight p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn-twitch {
+    background: #ffffff;
+    color: #9146FF !important;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: 0.3s ease-in-out;
+    text-decoration: none !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-twitch:hover {
+    background: #f0f0f0;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Light Mode: garante que o bloco de destaque permaneça com as cores da Twitch */
+.light-mode .twitch-highlight h3,
+.light-mode .twitch-highlight p {
+    color: #ffffff !important; 
+}
+   
 </style>
 </head>
 <body>
@@ -1498,6 +1550,7 @@
 
 
 </html>
+
 
 
 
